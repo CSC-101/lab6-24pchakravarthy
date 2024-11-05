@@ -64,15 +64,47 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    def test_selection_sort_books1(self):
+        books = [data.Book(["Author C"], "Book C"), data.Book(["Author Z"], "Book Z"), data.Book(["Author A"], "Book A")]
+        lab6.selection_sort_books(books)
+        self.assertEqual(books, [data.Book(['Author A'], 'Book A'), data.Book(['Author C'], 'Book C'), data.Book(['Author Z'], 'Book Z')])
+
+    def test_selection_sort_books2(self):
+        books = []
+        lab6.selection_sort_books(books)
+        self.assertEqual(books, [])
 
 
     # Part 2
+    def test_swap_case1(self):
+        x1 = lab6.swap_case("Hello World234!")
+        self.assertEqual(x1, "hELLO wORLD234!")
 
+    def test_swap_case2(self):
+        x2 = lab6.swap_case("I LoVE ćS")
+        self.assertEqual(x2, "i lOve Ćs")
 
     # Part 3
+    def test_str_translate1(self):
+        s1 = lab6.str_translate("help", "e", "a")
+        self.assertEqual(s1, "halp")
 
+    def test_str_translate2(self):
+        s1 = lab6.str_translate("banana", "a", "e")
+        self.assertEqual(s1, "benene")
 
+    def test_str_translate3(self):
+        s1 = lab6.str_translate("scream", "p", "a")
+        self.assertEqual(s1, "scream")
     # Part 4
+    def test_histogram1(self):
+        h1 = lab6.histogram("i love the book because it is the best")
+        self.assertEqual(h1, {'i': 1, 'love': 1, 'the': 2, 'book': 1, 'because': 1, 'it': 1, 'is': 1, 'best': 1})
+
+    def test_histogram2(self):
+        h2 = lab6.histogram("repeat repeat not repeat repeat not repeat")
+        self.assertEqual(h2, {'repeat': 5, 'not': 2})
+
 
 
 

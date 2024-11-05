@@ -35,14 +35,56 @@ def selection_sort(values:list[int]) -> None:
         values[mindex] = values[idx]
         values[idx] = tmp
 
+def index_smallest_from_books(books:list[data.Book], start:int) -> Optional[int]:
+    if start >= len(books) or start < 0:
+        return None
 
+    mindex = start
+    for idx in range(start + 1, len(books)):
+        if books[idx].title < books[mindex].title:
+            mindex = idx
+
+    return mindex
 # Part 1
+def selection_sort_books(books : list[data.Book]) -> None:
+    for idx in range(len(books) - 1):
+        mindex = index_smallest_from_books(books, idx)
+        tmp = books[mindex]
+        books[mindex] = books[idx]
+        books[idx] = tmp
 
 
 # Part 2
+def swap_case(looker : str) -> str:
+    finalstr = ""
+    for char in looker:
+        if char.islower():
+            finalstr += char.upper()
+        elif char.isupper():
+            finalstr += char.lower()
+        else:
+            finalstr += char
+    return finalstr
 
 
 # Part 3
+def str_translate(newstr : str, old : str, new : str) -> str:
+    finalstr = ""
+    for char in newstr:
+        if char == old:
+            finalstr += new
+        else:
+            finalstr += char
+    return finalstr
 
 
 # Part 4
+def histogram(newstr : str) -> dict:
+    counter = {}
+    words = newstr.split()
+    for word in words:
+        if word in counter:
+            counter[word] += 1
+        else:
+            counter[word] = 1
+    return counter
